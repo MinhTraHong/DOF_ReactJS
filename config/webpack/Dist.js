@@ -23,7 +23,7 @@ class WebpackDistConfig extends WebpackBaseConfig {
         super();
         this.config = {
             cache: false,
-            devtool: 'source-map',
+            devtool: 'cheap-module-source-map',
             entry: [
                 './index.js'
             ],
@@ -31,11 +31,12 @@ class WebpackDistConfig extends WebpackBaseConfig {
                 path: root('dist'),
                 publicPath: '/',
                 filename: 'assets/app.js',
-                chunkFilename: 'assets/[id].[hash].chunk.js'
+                chunkFilename: 'assets/[id].[hash].chunk.js',
+                crossOriginLoading: 'anonymous'
             },
             plugins: [
                 new webpack.DefinePlugin({
-                    'process.env.NODE_ENV': '"production"'
+                    'process.env.NODE_ENV': '"development"'
                 }),
                 new webpack.optimize.AggressiveMergingPlugin(),
                 new webpack.NoEmitOnErrorsPlugin(),

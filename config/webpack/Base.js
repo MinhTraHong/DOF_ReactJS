@@ -79,7 +79,7 @@ class WebpackBaseConfig {
 
         return {
             context: this.srcPathAbsolute,
-            devtool: 'eval',
+            devtool: 'cheap-module-source-map',
             devServer: {
                 contentBase: ['./public/', './src/'],
                 publicPath: '/assets/',
@@ -183,7 +183,8 @@ class WebpackBaseConfig {
             output: {
                 path: path.resolve('./dist/assets'),
                 filename: 'app.js',
-                publicPath: './assets/'
+                publicPath: './assets/',
+                crossOriginLoading: 'anonymous'
             },
             plugins: [
                 new ExtractTextPlugin('styles.css'),
